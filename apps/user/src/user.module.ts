@@ -9,21 +9,7 @@ import { AuthGuard, CommonModule, HttpInterceptor } from '@app/common';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
-  imports: [
-    RedisModule,
-    PrismaModule,
-    EmailModule,
-    JwtModule.registerAsync({
-      global: true,
-      useFactory: () => ({
-        secret: 'oliver',
-        signOptions: {
-          expiresIn: '1d',
-        },
-      }),
-    }),
-    CommonModule,
-  ],
+  imports: [RedisModule, PrismaModule, EmailModule, CommonModule],
   controllers: [UserController],
   providers: [
     UserService,
