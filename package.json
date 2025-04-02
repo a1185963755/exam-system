@@ -28,6 +28,8 @@
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
     "nodemailer": "^6.10.0",
     "redis": "^4.7.0",
     "reflect-metadata": "^0.2.2",
@@ -85,6 +87,7 @@
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
       "^@app/email(|/.*)$": "<rootDir>/libs/email/src/$1",
+      "^@app/excel(|/.*)$": "<rootDir>/libs/excel/src/$1",
       "^@app/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1",
       "^@app/redis(|/.*)$": "<rootDir>/libs/redis/src/$1"
     }

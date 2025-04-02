@@ -21,4 +21,22 @@ export class RedisService {
       await this.redisClient.expire(key, ttl);
     }
   }
+
+  async zAdd(key: string, data: { score: number; value: string }[]) {
+    await this.redisClient.zAdd(key, data);
+  }
+
+  async zRankList(key: string, start: number = 0, stop: number = -1) {
+    const res = await this.redisClient.zRange(key, start, stop, {
+      REV: true,
+    });
+    const promsises = res.map((item) => this.redisClient.zScore(key, item));
+    const scores = await Promise.all(promsises);
+    return res.map((item, index) => {
+      return {
+        name: item,
+        score: scores[index],
+      };
+    });
+  }
 }

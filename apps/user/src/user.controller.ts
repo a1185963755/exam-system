@@ -55,7 +55,11 @@ export class UserController {
       throw new HttpException('邮箱不能为空', HttpStatus.BAD_REQUEST);
     }
     const randomCaptcha = Math.random().toString().slice(-6);
-    await this.redisService.set(`captcha_${email}`, randomCaptcha, 60 * 5);
+    await this.redisService.set(
+      `update_password_captcha_${email}`,
+      randomCaptcha,
+      60 * 5,
+    );
     await this.emailService.sendMail({
       to: email,
       subject: '修改密码验证码',
